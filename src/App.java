@@ -82,21 +82,46 @@ import java.util.*;
 public class App {
     public static void main(String[] args) throws Exception {
         // DO NOT TOUCH THE THREE LINES BELOW
+        Scanner scanner = new Scanner(System.in);
         int secretNumber = getSecretNumber();
-        System.out.println("The secret number is " + secretNumber + ". Shh! Don't tell anyone");
-        Scanner reader = new Scanner(System.in);
-        // WRITE YOUR CODE IN THE SPACE BELOW
+        int count = 0;
+        System.out.println("The secret number is " + secretNumber + " Shh! Don't tell anyone");
+        while (true) {
+            System.out.println("Guess a number:");
+            int user = scanner.nextInt();
+            int remainder = secretNumber % 2;
+            count++;
+            if (user == secretNumber) {
+                break;
+            }
+            if (user < 1) {
+                System.out.println("INVALID");
+            }
+            if (user > 20) {
+                System.out.println("INVALID");
+            }
+            if (user < secretNumber) {
+                System.out.println("higher");
+            }
+            if (user > secretNumber) {
+                System.out.println("lower");
+            }
+            if (remainder == 0) {
 
+                System.out.println("Hint: the secret number is even.");
 
+            } else {
+                System.out.println("Hint: the secret number is odd.");
+                secretNumber = secretNumber;
 
+            }
+           
+        }  System.out.println("it took you " + count + " tries");
     }
-
-
 
     // Do not modify!!!
     public static int getSecretNumber() {
         Random random = new Random();
         return random.nextInt(20) + 1; // 1–20 inclusive
     }
-
 }
